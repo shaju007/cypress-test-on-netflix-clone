@@ -1,5 +1,6 @@
 describe('test tab section', function () {
   it('test tab-1', function () {
+    // visit index page
     cy.visit('http://localhost:8080/');
     cy.get('#tab-1 p').should('contain', 'Cancel anytime');
   });
