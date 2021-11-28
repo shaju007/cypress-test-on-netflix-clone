@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2, 3, 4, 5, 6]
+        containers: [footer-test, index-page, tab-test]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
