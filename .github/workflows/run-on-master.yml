@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Mater - Cypress Tests
 
 on: workflow_dispatch
 
