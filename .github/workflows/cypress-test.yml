@@ -1,22 +1,22 @@
-name: Cypress Tests
+# name: Cypress Tests
 
-on: [push]
+# on: [push]
 
-jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
-    container: cypress/included:8.0.0 # this line specifies the docker image we want
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm start
-      - uses: actions/upload-artifact@v1
-        if: always() # / if: failure() <- more suitable for production
-        with:
-          name: cypress-videos
-          path: cypress/videos
+# jobs:
+#   cypress-run:
+#     runs-on: ubuntu-latest
+#     container: cypress/included:8.0.0 # this line specifies the docker image we want
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#       # Install NPM dependencies, cache them correctly
+#       # and run all Cypress tests
+#       - name: Cypress run
+#         uses: cypress-io/github-action@v2
+#         with:
+#           start: npm start
+#       - uses: actions/upload-artifact@v1
+#         if: always() # / if: failure() <- more suitable for production
+#         with:
+#           name: cypress-videos
+#           path: cypress/videos
