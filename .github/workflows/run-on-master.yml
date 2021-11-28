@@ -1,4 +1,4 @@
-name: Mater - Cypress Tests
+name: Master - Cypress Tests
 
 on: [push]
 
