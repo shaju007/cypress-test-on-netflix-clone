@@ -1,6 +1,6 @@
 name: Mater - Cypress Tests
 
-on: workflow_dispatch
+on: [push]
 
 jobs:
   cypress-run:
