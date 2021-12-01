@@ -6,25 +6,34 @@ on:
       - master
 
 jobs:
-  cypress-run:
+  job1:
     runs-on: ubuntu-latest
-    container: cypress/included:8.0.0 # this line specifies the docker image we want
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [footer-test, index-page, tab-test]
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          spec: cypress/integration/${{ matrix.containers }}.spec.js
-          start: npm start
-      - uses: actions/upload-artifact@v1
-        if: always() # / if: failure() <- more suitable for production
-        with:
-          name: cypress-videos
-          path: cypress/videos
+    - id: set-matrix
+      run: echo "::set-output name=test-chunks::$(find cypress/integration -type f -name "*.spec.js" | xargs -n15 | tr ' ' ',' | jq -R . | jq -s -cM .)"
+  
+  cypress-run:
+   needs: job1
+   runs-on: ubuntu-latest
+   container: cypress/included:8.0.0 # this line specifies the docker image we want
+   strategy:
+    fail-fast: false
+    matrix:
+      containers: ${{fromJson(needs.job1.outputs.matrix)}}
+   steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    # Install NPM dependencies, cache them correctly
+    # and run all Cypress tests
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
+      with:
+        spec: cypress/integration/${{ matrix.containers }}.spec.js
+        start: npm start
+    - uses: actions/upload-artifact@v1
+      if: always() # / if: failure() <- more suitable for production
+      with:
+        name: cypress-videos
+        path: cypress/videos
