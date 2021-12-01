@@ -28,7 +28,7 @@ jobs:
     - name: Cypress run
       uses: cypress-io/github-action@v2
       with:
-        spec: cypress/integration/${{ matrix.containers }}.spec.js
+        spec: ${{ matrix.containers }}
         start: npm start
     - uses: actions/upload-artifact@v1
       if: always() # / if: failure() <- more suitable for production
