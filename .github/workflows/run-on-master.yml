@@ -9,7 +9,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - id: set-matrix
-      run: echo "::set-output name=test-chunks::$(find ../../cypress/integration -type f -name "*.spec.js" | xargs -n15 | tr ' ' ',' | jq -R . | jq -s -cM .)"
+      run: echo "::set-output name=matrix::$(find cypress/integration -type f -name "*.spec.js" | xargs -n15 | tr ' ' ',' | jq -R . | jq -s -cM .)"
   
   cypress-run:
    needs: job1
