@@ -17,7 +17,6 @@ jobs:
         run: echo "::set-output name=matrix::$(find cypress/integration -type f -name "*.spec.js" | xargs -n2 | tr ' ' ',' | jq -R . | jq -s -cM .)"
 
   cypress-run:
-    name: cypress-run
     needs: job1
     runs-on: ubuntu-latest
     container: cypress/included:8.0.0 # this line specifies the docker image we want
