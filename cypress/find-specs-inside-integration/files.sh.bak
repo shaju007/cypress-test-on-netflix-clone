@@ -23,7 +23,16 @@
 array=()
 while IFS=  read -r -d $'\0'; do
     array+=("$(basename "$REPLY")")
-done < <(find ./integration -name "*.spec.js" -print0)
+done < <(find ../integration -name "*.spec.js" -print0)
 echo "${array[@]}"
 echo "${#array[@]}"
+printf '%s\n' "${array[@]}" | jq -R . | jq -s .
+echo "${array[@]}"
+
+
+newArray=(1 2 3)
+echo "${newArray[@]}" |
+  jq -s '{client_nohup: ., server_nohup: []}'
+  
+  find ./integration -type f -name "*.spec.js" | xargs -n15 | tr ' ' ',' | jq -R . | jq -s -cM .
 

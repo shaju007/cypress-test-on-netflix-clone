@@ -34,5 +34,5 @@ newArray=(1 2 3)
 echo "${newArray[@]}" |
   jq -s '{client_nohup: ., server_nohup: []}'
   
-  find cypress/integration -type f -name "*.spec.js" | xargs -n15 | tr ' ' ',' | jq -R . | jq -s -cM .
+  find ./cypress/integration -type f -name "*.spec.js" | xargs -n15 | tr ' ' ',' | jq -R . | jq -s -cM .
 
