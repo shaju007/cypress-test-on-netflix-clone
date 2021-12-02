@@ -34,7 +34,6 @@ jobs:
         with:
           spec: ${{matrix.containers}}
           start: npm start
-      - run: npx cypress run --spec ${{matrix.containers}}
       - uses: actions/upload-artifact@v1
         if: always() # / if: failure() <- more suitable for production
         with:
