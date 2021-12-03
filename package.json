@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress open",
-    "start": "http-server",
-    "cypress-run": "cypress run"
+    "start": "http-server -p 8080",
+    "cy:run": "cypress run",
+    "docker-test": "start http://localhost:8080 & wait-on http://localhost:8080 & docker run -it -v /c/wamp64/www/netflix-landing-page:/c/wamp64/www/netflix-landing-page -w /c/wamp64/www/netflix-landing-page cypress/included:3.4.0"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,8 @@
   },
   "homepage": "https://github.com/shaju007/cypress-test-on-netflix-clone#readme",
   "devDependencies": {
-    "cypress": "^9.1.0"
+    "cypress": "^9.1.0",
+    "start-server-and-test": "^1.14.0"
   },
   "dependencies": {
     "cypress-image-snapshot": "^4.0.1",
