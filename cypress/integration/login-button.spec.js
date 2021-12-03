@@ -1,4 +1,4 @@
-/// < reference types="cypress" />
+/// <reference types="cypress" />
 describe('Test login button', () => {
   it('Test login button text', () => {
     cy.visit('http://localhost:8080/');
