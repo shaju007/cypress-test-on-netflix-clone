@@ -1,0 +1,5 @@
+docker run -it -v /$(PWD):/$(pwd) -w /$(pwd) -e CYPRESS_baseUrl=http://host.docker.internal:8080 cypress/included:3.2.0 run
+
+
+docker run -it -v /$(PWD):/$(PWD) -w /$(PWD) -e CYPRESS_baseUrl=http://host.docker.internal:8080 cypress/included:8.7.0
+

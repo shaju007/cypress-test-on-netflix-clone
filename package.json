@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress open",
-    "start": "http-server",
-    "cypress-run": "cypress run"
+    "start": "http-server -p 8080",
+    "cypress-run": "cypress run",
+    "cy:serve": "serve -p 8080",
+    "cy:run:chrome": "cypress run --browser=chrome"
   },
   "repository": {
     "type": "git",
