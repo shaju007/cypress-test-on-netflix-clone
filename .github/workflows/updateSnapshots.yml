@@ -23,4 +23,5 @@ jobs:
       - name: Run update snapshot bash file
         run: |
           npm install
+          export CYPRESS_baseUrl="http://$(ip route | grep -E '(default|docker0)' | grep -Eo '([0-9]+\.){3}[0-9]+' | tail -1):8080"
           sh ./updateTestOnDocker.sh
