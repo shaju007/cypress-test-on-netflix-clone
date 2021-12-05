@@ -21,4 +21,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run update snapshot bash file
-        run: sh ./updateTestOnDocker.sh
+        run: |
+          npm install
+          sh ./updateTestOnDocker.sh
