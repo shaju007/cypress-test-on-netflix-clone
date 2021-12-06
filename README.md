@@ -5,3 +5,7 @@
 
 -- cypress image snapshots plugin for visual regression testing
 
+-- update snapshots using shell script updateTestOnDocker.sh
+
+-- run test locally using shell script testOnDocker.sh
+
