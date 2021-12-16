@@ -29,3 +29,8 @@ import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 addMatchImageSnapshotCommand({
   customDiffConfig: { threshold: 0.7 }, // threshold for each pixel
 });
+
+// Command to go to a page
+Cypress.Commands.add('clickTab', (tab) => {
+  cy.get(`#tab-${tab} i`).click()
+})
