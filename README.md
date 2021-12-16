@@ -8,4 +8,5 @@
 -- update snapshots using shell script updateTestOnDocker.sh
 
 -- run test locally on Docker using shell script testOnDocker.sh
+-- test on mobile by changing viewport
 
