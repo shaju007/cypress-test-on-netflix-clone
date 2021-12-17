@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: Cypress Tests from cypress
+name: Cypress Tests from doc
 
 on:
   workflow_dispatch:
@@ -7,6 +7,7 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -16,3 +17,4 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm start
+          browser: firefox
