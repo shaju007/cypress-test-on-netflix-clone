@@ -12,3 +12,5 @@
 -- test on mobile by changing viewport
 
 -- cypress custom command added
+
+-- cypress dashboard with parallelization in github actions
